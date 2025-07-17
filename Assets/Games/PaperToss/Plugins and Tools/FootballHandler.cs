@@ -65,6 +65,8 @@ namespace nostra.booboogames.PaperToss
         [SerializeField] Transform MainCam;
 
 
+        [SerializeField] StaticBallGenerate staticBallGenerate;
+
 
 
         #region Unity Events
@@ -91,7 +93,8 @@ namespace nostra.booboogames.PaperToss
             Randomballselect = UnityEngine.Random.Range(0, RandomBall.Count);
             RandomBall[Randomballselect].SetActive(true);
             selectedmesh = RandomBall[Randomballselect].GetComponent<MeshRenderer>();
-       }
+            staticBallGenerate.GenerateStaticBall(Randomballselect);
+        }
 
         public void DisableWind()
         {
@@ -290,7 +293,7 @@ namespace nostra.booboogames.PaperToss
                 GetComponent<SphereCollider>().enabled = false;
                 selectedmesh.enabled = false;
                 ManageDummyBall(manageDummyArg);
-                ResetBall(1, false);
+                ResetBall(2, false);
 
             }
         }
@@ -548,22 +551,24 @@ namespace nostra.booboogames.PaperToss
             if (IsSplash == "Water")
             {
                 gamemanager.goalBucket.StopEmission();
-
-                Instantiate(WaterSplash, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
+                staticBallGenerate.SetBallTransform(transform);
+              //  Instantiate(WaterSplash, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
                 gamemanager.audioSource.WaterTossPlay();
             }
             else if (IsSplash == "Dust")
             {
                 gamemanager.goalBucket.StopEmission();
+                staticBallGenerate.SetBallTransform(transform);
 
-                Instantiate(staticBall, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
+                //  Instantiate(staticBall, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
                 gamemanager.audioSource.BallDropTossPlay();
             }
             else if (IsSplash == "Space")
             {
                 gamemanager.goalBucket.StopEmission();
+                staticBallGenerate.SetBallTransform(transform);
 
-                Instantiate(SpaceEx, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
+                //Instantiate(SpaceEx, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
                 gamemanager.audioSource.SpaceTossPlay();
             }
 

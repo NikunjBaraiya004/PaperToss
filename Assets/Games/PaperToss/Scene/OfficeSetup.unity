@@ -35764,6 +35764,7 @@ MonoBehaviour:
   - {fileID: 1512368783}
   selectedmesh: {fileID: 0}
   MainCam: {fileID: 3617535047759737518}
+  staticBallGenerate: {fileID: 0}
   swipeHoldThreshold: 0.5
   bufferSize: 5
   winfInfPer: 1.5
@@ -36371,10 +36372,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610417215796604990}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Mass: 1
-  m_LinearDamping: 0.5
-  m_AngularDamping: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
