@@ -23,13 +23,13 @@ namespace nostra.booboogames.PaperToss
         private Vector3 startingPos;
         private int direction = 1;
 
-        [SerializeField] Transform SeaPanel, SpacePanel, SteamCityPanel;
+      //  [SerializeField] Transform SeaPanel, SpacePanel, SteamCityPanel;
 
         public bool isMoving = false;
 
         private Coroutine moveRoutine;
         [SerializeField] Animator BucketAni;
-        [SerializeField] GameObject SeaView,StaemCityView, SpaceView;
+     //   [SerializeField] GameObject SeaView,StaemCityView, SpaceView;
         [SerializeField] Material BucketMaterial,SoccerMaterial,VollyMaterial,GolfMaterial;
         [SerializeField] Color SoccerColor, VollyColor, GolfColor;
         [SerializeField] ParticleSystem BuckerRingParticle;
@@ -52,9 +52,9 @@ namespace nostra.booboogames.PaperToss
             if (obj == 0) // Enable sea view
             {
               
-                SeaView.SetActive(true);
+               /* SeaView.SetActive(true);
                 StaemCityView.SetActive(false);
-                SpaceView.SetActive(false);
+                SpaceView.SetActive(false);*/
               
                 main.startColor = SeaViewColor;
 
@@ -67,9 +67,9 @@ namespace nostra.booboogames.PaperToss
             else if (obj == 1) // Enable SpaceView
             {
 
-                SeaView.SetActive(false);
+               /* SeaView.SetActive(false);
                 StaemCityView.SetActive(false);
-                SpaceView.SetActive(true);
+                SpaceView.SetActive(true);*/
 
                 main.startColor = SpaceViewColor;
 
@@ -83,9 +83,9 @@ namespace nostra.booboogames.PaperToss
             }
             else if (obj == 2) // Enable SteamCity
             {
-                StaemCityView.SetActive(true);
+               /* StaemCityView.SetActive(true);
                 SpaceView.SetActive(false);
-                SeaView.SetActive(false);
+                SeaView.SetActive(false);*/
 
                 main.startColor = SteamViewColor;
 
@@ -195,7 +195,7 @@ namespace nostra.booboogames.PaperToss
             }
 
 
-            SeaPanel.DOMove(new Vector3(pos.x, SeaPanel.transform.position.y, pos.z), 0.15f).OnComplete(() =>
+         /*   SeaPanel.DOMove(new Vector3(pos.x, SeaPanel.transform.position.y, pos.z), 0.15f).OnComplete(() =>
             {
                 if (move)
                 {
@@ -217,7 +217,7 @@ namespace nostra.booboogames.PaperToss
                 {
                     StartSideToSideWithPause(SpacePanel.transform);
                 }
-            });
+            });*/
 
         }
 

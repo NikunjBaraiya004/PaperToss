@@ -7,7 +7,7 @@ namespace nostra.booboogames.slapcastle
     {
         [SerializeField] AudioSource audioSource;
 
-        [SerializeField] AudioClip ThrowToss, GoalToss, WaterSplash, spaceSparking, balldrop;
+        [SerializeField] AudioClip ThrowToss, GoalToss, WaterSplash, spaceSparking, balldrop, FootballSound, BasketBallSound, GolfSound;
 
 
         public void BallDropTossPlay()
@@ -35,11 +35,29 @@ namespace nostra.booboogames.slapcastle
             PlayAudio(spaceSparking);
         }
 
+        public void BallDropSound(int BallName)
+        {
+            if (BallName == 0)
+                PlayAudio(BasketBallSound);
+
+            else if (BallName == 1)
+                PlayAudio(FootballSound);
+
+            else if(BallName == 2)
+                PlayAudio(FootballSound);
+
+            else if(BallName == 3)
+                PlayAudio(GolfSound);
+        }
+
         void PlayAudio(AudioClip audioClip)
         {
             audioSource.clip = audioClip;
             audioSource.Play();
         }
+
+
     }
+
     
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using nostra.booboogames.PaperToss;
+using nostra.booboogames.slapcastle;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace nostra.booboogames.PaperToss
         [SerializeField] List<StaticBallScript> StaticBallScripts = new List<StaticBallScript>();
         [SerializeField] Transform prefabparent;
         [SerializeField] int staticballcount;
+        [SerializeField] AudioManagerPaperToss AudioManagerPaperToss;
 
         public void GenerateStaticBall(int visibleballnumber)
         {
@@ -20,6 +22,7 @@ namespace nostra.booboogames.PaperToss
             {
                 var ball = Instantiate(StaticBallPrefab, new Vector3(0, 0, -10), Quaternion.identity, prefabparent);
                 var ballTemp = ball.GetComponent<StaticBallScript>();
+                ballTemp.audioSource = AudioManagerPaperToss;
                 StaticBallScripts.Add(ballTemp);
                 ballTemp.StaticballEnable(visibleballnumber);
             }

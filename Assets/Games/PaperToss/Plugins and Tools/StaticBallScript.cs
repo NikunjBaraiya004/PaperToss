@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using nostra.booboogames.slapcastle;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ namespace nostra.booboogames.PaperToss
         [SerializeField] MeshRenderer meshRenderer;
         [SerializeField] float ResetBallTimer = 1.5f;
         [SerializeField] Rigidbody rb;
+        [SerializeField] int BallNum;
+        public AudioManagerPaperToss audioSource;
+
         public void StaticballEnable(int visiblenum)
         {
             for (int i = 0; i < staticball.Count; i++) 
@@ -22,6 +26,8 @@ namespace nostra.booboogames.PaperToss
                 {
                     staticball[i].SetActive(true);
                     meshRenderer = staticball[i].GetComponent<MeshRenderer>();
+                    BallNum = i;
+
                 }
                 else
                     staticball[i].SetActive(false);
@@ -29,7 +35,15 @@ namespace nostra.booboogames.PaperToss
             }
         }
 
-    
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag.Equals("QP_Tag_04"))
+            {
+                audioSource.BallDropSound(BallNum);
+            }
+        }
+
 
         public bool GetVisible()
         { 

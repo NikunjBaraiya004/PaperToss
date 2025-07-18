@@ -261,8 +261,6 @@ namespace nostra.booboogames.PaperToss
             {
                 string manageDummyArg = "Dust";
 
-               
-
                 if (collision.gameObject.CompareTag("QP_Tag_01"))
                 {
                     manageDummyArg = "Dust";
@@ -553,7 +551,7 @@ namespace nostra.booboogames.PaperToss
                 gamemanager.goalBucket.StopEmission();
                 staticBallGenerate.SetBallTransform(transform);
               //  Instantiate(WaterSplash, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
-                gamemanager.audioSource.WaterTossPlay();
+             //   gamemanager.audioSource.WaterTossPlay();
             }
             else if (IsSplash == "Dust")
             {
@@ -561,7 +559,7 @@ namespace nostra.booboogames.PaperToss
                 staticBallGenerate.SetBallTransform(transform);
 
                 //  Instantiate(staticBall, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
-                gamemanager.audioSource.BallDropTossPlay();
+              //  gamemanager.audioSource.BallDropTossPlay();
             }
             else if (IsSplash == "Space")
             {
@@ -569,7 +567,7 @@ namespace nostra.booboogames.PaperToss
                 staticBallGenerate.SetBallTransform(transform);
 
                 //Instantiate(SpaceEx, transform.position, Quaternion.Euler(-90, 0, 0), gamemanager.transform);
-                gamemanager.audioSource.SpaceTossPlay();
+              //  gamemanager.audioSource.SpaceTossPlay();
             }
 
         }
