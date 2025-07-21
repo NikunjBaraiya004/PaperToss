@@ -49,7 +49,7 @@ namespace nostra.booboogames.PaperToss
         {
             var main = BuckerRingParticle.main;
 
-            if (obj == 0) // Enable sea view
+            if (obj == 0) // Enable Office
             {
               
                /* SeaView.SetActive(true);
@@ -63,38 +63,41 @@ namespace nostra.booboogames.PaperToss
                 VollyMaterial.color = NormalColor;
                 GolfMaterial.color = NormalColor;
                 gameManager.footBall.SetTrail(0);
+                gameManager.fanrotaion.SetLeafAndPaperParticle(0);
             }
-            else if (obj == 1) // Enable SpaceView
+            else if (obj == 1) // Enable OutDoor
             {
 
                /* SeaView.SetActive(false);
                 StaemCityView.SetActive(false);
                 SpaceView.SetActive(true);*/
 
-                main.startColor = SpaceViewColor;
+                main.startColor = SeaViewColor;
 
                 BucketMaterial.color = SpaceColor;
                 SoccerMaterial.color = NormalColor;
                 VollyMaterial.color = NormalColor;
                 GolfMaterial.color = NormalColor;
                 gameManager.footBall.SetTrail(1);
-
+                Debug.Log("checkc bucket color ");
+                gameManager.fanrotaion.SetLeafAndPaperParticle(0);
 
             }
-            else if (obj == 2) // Enable SteamCity
+            else if (obj == 2) // Enable Wild
             {
                /* StaemCityView.SetActive(true);
                 SpaceView.SetActive(false);
                 SeaView.SetActive(false);*/
 
-                main.startColor = SteamViewColor;
+                main.startColor = SeaViewColor;
 
                 BucketMaterial.color = NormalColor;
-                SoccerMaterial.color = SoccerColor;
-                VollyMaterial.color = VollyColor;
-                GolfMaterial.color = GolfColor;
-                gameManager.footBall.SetTrail(2);
+                SoccerMaterial.color = NormalColor;
+                VollyMaterial.color = NormalColor;
+                GolfMaterial.color = NormalColor;
+                gameManager.footBall.SetTrail(1);
 
+                gameManager.fanrotaion.SetLeafAndPaperParticle(1);
             }
         }
 
@@ -115,7 +118,10 @@ namespace nostra.booboogames.PaperToss
                 other.GetComponent<SphereCollider>().enabled = true;
                 fh.Goal();
                 BucketAni.Play("GoalAnimation");
-                gameManager.AddBall();
+
+
+
+              
                 gameManager.IncLvl(true);
                 gameManager.audioSource.GoalTossPlay();
 
@@ -129,11 +135,22 @@ namespace nostra.booboogames.PaperToss
                         ComboText.transform.DOShakeScale(0.3f, new Vector3(1f, 1f, 1f), 1, 1f, false);
                     }
 
+                    gameManager.IncreaseStikeImg();
 
-                    ComboText.text = "x" + goalcount.ToString();
+                    if (goalcount == 4)
+                    {
+                        gameManager.PlayConfetti();
+                        goalcount = 0;
+                        ComboText.transform.DOScale(Vector3.one, 0.1f).OnComplete(() => 
+                        {
+                            ComboText.text = "";
+                        });
+                       
+                    }
+                    else
+                        ComboText.text = "x" + goalcount.ToString();
                 }
-                
-
+               
 
 
                 if (goalcount >= 2)

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AssetKits.ParticleImage;
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using nostra.booboogames.slapcastle;
 using TMPro;
 using UnityEngine;
@@ -22,6 +24,11 @@ namespace nostra.booboogames.PaperToss
         
         int scoreVal = 0;
         int currLife = 0;
+
+        [Header("-- UI --")]
+        [SerializeField] Image CountImgBg; 
+        private float targetFillAmount;
+        [SerializeField] ParticleImage Conffeti;
 
         [Header("-- ref --")]
         public FootballHandler footBall;
@@ -84,7 +91,7 @@ namespace nostra.booboogames.PaperToss
             StopCoroutine(AutoPlay());
             
             footBall.ResetBall(0);
-
+            ResetStrikeImg();
             currLife = MaxLife;
             scoreVal = 0;
             
@@ -97,10 +104,37 @@ namespace nostra.booboogames.PaperToss
             
         }
 
-        public void AddBall()
-        { 
-            currLife++; 
-            UpdateData();
+        public void PlayConfetti()
+        {
+            
+            
+            DOVirtual.DelayedCall(0.3f,AddBall);
+        }
+
+        void AddBall()
+        {
+            
+            LifeTxt.transform.DOScale(Vector3.one * 2.2f, 0.25f).OnComplete(() =>
+            {
+                currLife++;
+                UpdateData();
+                LifeTxt.transform.DOScale(Vector3.one, 0.25f);
+            });
+
+            Conffeti.Play();
+           
+            ResetStrikeImg();
+        }
+
+        public void IncreaseStikeImg()
+        {
+            targetFillAmount = Mathf.Clamp01(CountImgBg.fillAmount + 0.3333333f);
+            CountImgBg.DOFillAmount(targetFillAmount, 0.3f); // Smoothly fills over 0.3 seconds
+        }
+
+        public void ResetStrikeImg()
+        {
+            CountImgBg.DOFillAmount(0f, 0f); // Smoothly resets to 0
         }
 
         public void OnPause()
@@ -190,14 +224,14 @@ namespace nostra.booboogames.PaperToss
 
                 if (changePos)
                 {
-                   /* if (scoreVal < 7 || tries >= 2)
+                    if (scoreVal < 7 || tries >= 2)
                     {
                         footBall.ApplyWind(Vector3.zero, 0);
                         footBall.DisableWind();
                         goalBucket.AdjustBucketPosition(false);
                         tries = 0;
                         return;
-                    }*/
+                    }
                     setRandomWind();
                     if (scoreVal >= 7 && scoreVal < 12)
                     {
@@ -247,6 +281,7 @@ namespace nostra.booboogames.PaperToss
                 else
                 {
                     currLife--;
+                    ResetStrikeImg();
 
                     if (currLife != 0)
                     {

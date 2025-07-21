@@ -1,4 +1,4 @@
-Library: C:\Users\BooBoo\Paper Toss\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
+Library: C:\Users\BooBoo\PaperTossGH\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
 --platform=Android
 --backend=burst-llvm-16
 --target=ARMV8A_AARCH64
@@ -8,10 +8,10 @@ Library: C:\Users\BooBoo\Paper Toss\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib
 --float-precision=Standard
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\Users\BooBoo\Paper Toss\Temp\Burst
+--temp-folder=C:\Users\BooBoo\PaperTossGH\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.30f1/Editor/Data/PlaybackEngines/AndroidPlayer
---decode-folder=C:\Users\BooBoo\Paper Toss\Library\Burst
---output=C:\Users\BooBoo\Paper Toss\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
+--decode-folder=C:\Users\BooBoo\PaperTossGH\Library\Burst
+--output=C:\Users\BooBoo\PaperTossGH\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 
