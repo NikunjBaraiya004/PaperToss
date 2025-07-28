@@ -432,14 +432,12 @@ namespace nostra.booboogames.PaperToss
                 FanObject.transform.position = new Vector3 (transform.position.x - 1.85f, transform.position.y, transform.position.z);
                 FanObject.transform.rotation = Quaternion.Euler(-10, 50, 0);
                 dir = "Left";
-                Debug.Log("Left");
             }
             else // for Right Side 
             {
                 FanObject.transform.position = new Vector3(transform.position.x + 1.85f, transform.position.y, transform.position.z);
                 FanObject.transform.rotation = Quaternion.Euler(-10,-50, 0);
                 dir = "Right";
-                Debug.Log("Right");
             }
 
             windDirection = new Vector3(direction.x, direction.y, 0f);
